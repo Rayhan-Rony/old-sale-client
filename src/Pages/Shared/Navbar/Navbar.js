@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
     return (
@@ -8,7 +9,7 @@ const Navbar = () => {
             </div>
             <div className="flex-none">
                 <ul className="menu menu-horizontal p-0">
-                    <li><a>Item 1</a></li>
+                    <li><Link to='/login'>Log In</Link></li>
                     <li tabIndex={0}>
                         <a>
                             Parent
