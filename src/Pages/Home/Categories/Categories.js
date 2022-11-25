@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios'
+import { Link } from 'react-router-dom';
 
 const Categories = () => {
     const [categories, setCategories] = useState([])
@@ -24,7 +25,7 @@ const Categories = () => {
                         <div className="card-body">
                             <h2 className="card-title">{category.name}</h2>
                             <div className="card-actions justify-end">
-                                <button className="btn btn-outline">See all phones</button>
+                                <Link to={`category/${category.category_id}`}><button className="btn btn-outline">See all phones</button></Link>
                             </div>
                         </div>
                     </div>)
