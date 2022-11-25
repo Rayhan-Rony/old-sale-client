@@ -1,38 +1,40 @@
 // import React, { useContext, useState } from 'react';
 // import toast from 'react-hot-toast';
 // import { Link, useLocation, useNavigate } from 'react-router-dom';
-// import { AuthContext } from '../../contexts/AuthProvider';
+
 // import UseTitle from '../../layout/hooks/UseTitle';
 
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../Context/AuthProvider";
 
 
 const Login = () => {
-    // const { logInWithEmail, loginWithGoogle } = useContext(AuthContext)
-    // const [error, setError] = useState('')
+    const { signIn } = useContext(AuthContext)
+    const [error, setError] = useState('')
     // const location = useLocation()
     // const from = location.state?.from?.pathname || '/'
     // const navigate = useNavigate()
     // UseTitle('Log in')
 
-    // const handleSubmit = (e) => {
-    //     e.preventDefault()
-    //     const form = e.target;
-    //     const email = form.email.value;
-    //     const password = form.password.value;
-    //     console.log(email, password)
-    //     logInWithEmail(email, password)
-    //         .then(result => {
-    //             const user = result.user;
-    //             console.log(user)
-    //             setError('')
-    //             form.reset()
-    //             toast.success('Log in Succesfulll')
-    //             navigate(from, { replace: true })
-    //         })
-    //         .catch(err => setError(err.message))
+    const handleOnSubmit = (e) => {
+        e.preventDefault()
+        const form = e.target;
+        const email = form.email.value;
+        const password = form.password.value;
+        console.log(email, password)
+        signIn(email, password)
+            .then(result => {
+                const user = result.user;
+                console.log(user)
+                setError('')
+                // form.reset()
+                // toast.success('Log in Succesfulll')
+                // navigate(from, { replace: true })
+            })
+            .catch(err => setError(err.message))
 
-    // }
+    }
     // const handleSignInWithGoogle = () => {
     //     loginWithGoogle()
     //         .then(result => {
@@ -44,7 +46,7 @@ const Login = () => {
     //         .catch(err => setError(err.message))
     // }
     return (
-        <form >
+        <form onSubmit={handleOnSubmit}>
             <div className="hero-content flex-col lg:flex-row-reverse lg:w-1/2 md:w-full mx-auto">
                 <div className="card flex-shrink-0 w-full  shadow-2xl bg-base-100 p-28">
                     <h1 className="text-3xl font-bold text-center">Login Now</h1>
@@ -61,7 +63,7 @@ const Login = () => {
                             </label>
                             <input type="password" name='password' placeholder="Password" className="input input-bordered" />
                             <div className='text-red-400'>
-                                {/* <p>{error}</p> */}
+                                <p>{error}</p>
                             </div>
                             <label className="label">
                                 <p >If you haven't any account please <Link className="label-text-alt link link-hover text-blue-400" to='/register'>Register</Link></p>

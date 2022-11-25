@@ -1,4 +1,5 @@
 import React from 'react';
+import BookNowModal from '../BookNowModal/BookNowModal';
 
 const SingleProduct = ({ product }) => {
     console.log(product)
@@ -19,8 +20,10 @@ const SingleProduct = ({ product }) => {
                     <div className="badge badge-outline">Original Price: {originalPrice}</div>
                     <div className="badge badge-outline">Resale Price: {resalePrice}</div>
                 </div>
-                <button className="btn btn-primary">Book Now</button>
+                {/* <label disabled={slots.length === 0} onClick={() => setTreatment(option)}  className="btn btn-primary text-white">Book Appointment</label> */}
+                <label className="btn btn-primary" htmlFor="booking-modal">Book Now</label>
             </div>
+            <BookNowModal name={name} price={resalePrice}></BookNowModal>
         </div>
     );
 };
