@@ -1,25 +1,28 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../../Context/AuthProvider';
 
 const Navbar = () => {
+    const { logOut, user } = useContext(AuthContext)
+    console.log(user)
     return (
         <div className="navbar bg-gray-200 rounded-sm">
             <div className="flex-1">
-                <a className="btn btn-ghost normal-case text-xl">OLD SALE</a>
+                <Link to='/' className="btn btn-ghost normal-case text-xl font-extrabold">OLD SALE</Link>
             </div>
             <div className="flex-none">
                 <ul className="menu menu-horizontal p-0">
-                    <li><Link to='/login'>Log In</Link></li>
-                    <li tabIndex={0}>
-                        <a>
-                            Parent
-                            <svg className="fill-current" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" /></svg>
-                        </a>
-                        <ul className="p-2 bg-base-100">
-                            <li><a>Submenu 1</a></li>
-                            <li><a>Submenu 2</a></li>
-                        </ul>
-                    </li>
+
+
+                    {
+                        user?.uid ?
+                            <>
+                                <li><Link to='/dashboard'>Dashboard</Link></li>
+                                <li><Link onClick={logOut}>log Out</Link></li>
+                            </>
+                            : <li><Link to='/login'>Log In</Link></li>
+                    }
+
                     <li><a>Item 3</a></li>
                 </ul>
             </div>

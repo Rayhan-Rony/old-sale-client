@@ -1,21 +1,20 @@
-// import React, { useContext, useState } from 'react';
-// import toast from 'react-hot-toast';
-// import { Link, useLocation, useNavigate } from 'react-router-dom';
 
-// import UseTitle from '../../layout/hooks/UseTitle';
 
 import { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import toast from "react-hot-toast";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Context/AuthProvider";
 
 
 const Login = () => {
-    const { signIn } = useContext(AuthContext)
+    const { signIn, loginWithGoogle } = useContext(AuthContext)
     const [error, setError] = useState('')
-    // const location = useLocation()
-    // const from = location.state?.from?.pathname || '/'
-    // const navigate = useNavigate()
-    // UseTitle('Log in')
+
+    const location = useLocation()
+    const from = location.state?.from?.pathname || '/'
+    console.log(from)
+    const navigate = useNavigate()
+
 
     const handleOnSubmit = (e) => {
         e.preventDefault()
@@ -28,23 +27,25 @@ const Login = () => {
                 const user = result.user;
                 console.log(user)
                 setError('')
-                // form.reset()
-                // toast.success('Log in Succesfulll')
-                // navigate(from, { replace: true })
+                form.reset()
+                toast.success('Log in Succesfulll')
+
+                navigate(from, { replace: true })
             })
             .catch(err => setError(err.message))
 
     }
-    // const handleSignInWithGoogle = () => {
-    //     loginWithGoogle()
-    //         .then(result => {
-    //             const user = result.user;
-    //             console.log(user)
-    //             setError('')
-    //             navigate(from, { replace: true })
-    //         })
-    //         .catch(err => setError(err.message))
-    // }
+    const handleSignInWithGoogle = () => {
+        loginWithGoogle()
+            .then(result => {
+                const user = result.user;
+                console.log(user)
+                setError('')
+
+                navigate(from, { replace: true })
+            })
+            .catch(err => setError(err.message))
+    }
     return (
         <form onSubmit={handleOnSubmit}>
             <div className="hero-content flex-col lg:flex-row-reverse lg:w-1/2 md:w-full mx-auto">
@@ -73,7 +74,7 @@ const Login = () => {
                             <button type='submit' className="btn btn-primary">Log in</button>
                         </div>
                         <div className="form-control mt-6">
-                            <button className="btn btn-primary">Log In With Google</button>
+                            <button onClick={handleSignInWithGoogle} className="btn btn-primary">Log In With Google</button>
                         </div>
 
                     </div>

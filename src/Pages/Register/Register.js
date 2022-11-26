@@ -1,25 +1,24 @@
 import React, { useContext, useState } from 'react';
+import toast from 'react-hot-toast';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider';
 
-// import toast from 'react-hot-toast';
-// import { useLocation, useNavigate } from 'react-router-dom';
 
-// import UseTitle from '../../layout/hooks/UseTitle';
 
 const Register = () => {
-    const { createUser, loading, updateUserProfile } = useContext(AuthContext)
-    // const location = useLocation()
-    // const from = location.state?.from?.pathname || '/'
-    // const navigate = useNavigate()
+    const { createUser, updateUserProfile } = useContext(AuthContext)
+    const location = useLocation()
+    const from = location.state?.from?.pathname || '/'
+    const navigate = useNavigate()
     const [error, setError] = useState('')
-    // UseTitle('Register')
+
     const handleSubmit = (e) => {
         e.preventDefault()
         const form = e.target;
         const name = form.name.value;
         const email = form.email.value;
         const password = form.password.value;
-        // const photo = form.photo.value;
+
         console.log(name, email, password)
         createUser(email, password)
             .then(result => {
@@ -27,9 +26,9 @@ const Register = () => {
                 console.log(user)
                 setError('')
                 handleUpdateUserProfile(name)
-                // form.reset()
-                // toast.success('Sign Up Completed')
-                // navigate(from, { replace: true })
+                form.reset()
+                toast.success('Sign Up Completed')
+                navigate(from, { replace: true })
             })
             .catch(error => setError(error.message))
 
@@ -61,22 +60,14 @@ const Register = () => {
                             </label>
                             <input type="text" name='email' placeholder="Enter Your Email" className="input input-bordered" required />
                         </div>
-                        {/* <div className="form-control">
-                            <label className="label">
-                                <span className="label-text">Photo URL</span>
-                            </label>
-                            <input type="text" name='photo' placeholder="Enter Your Photo URL" className="input input-bordered" required />
-                        </div> */}
+
                         <div className="form-control">
-                            {/* <label className="label">
-                                <span className="label-text">Photo URL</span>
-                            </label>
-                            <input type="text" name='photo' placeholder="Enter Your Photo URL" className="input input-bordered" required /> */}
+
                             <label className="label">
                                 <span className="label-text">Select Your Role</span>
                             </label>
                             <select className="select w-full input-bordered required  ">
-                                {/* <option disabled selected>Pick your favorite Simpson</option> */}
+
                                 <option value='user'>User</option>
                                 <option value='seller'>Seller</option>
                             </select>

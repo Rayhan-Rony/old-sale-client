@@ -1,10 +1,13 @@
 import React, { useContext } from 'react';
+import toast from 'react-hot-toast';
 import { AuthContext } from '../../Context/AuthProvider';
 
 const BookNowModal = ({ name, price }) => {
     const { user } = useContext(AuthContext)
     console.log(user?.displayName)
     const handleBook = e => {
+        e.preventDefault()
+        toast.success('Added Your Booking')
 
     }
     return (
