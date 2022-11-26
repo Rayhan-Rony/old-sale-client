@@ -18,8 +18,10 @@ const Register = () => {
         const name = form.name.value;
         const email = form.email.value;
         const password = form.password.value;
+        // const user = form.user;
+        const role = form.role.value;
 
-        console.log(name, email, password)
+        console.log(role, name, email, password)
         createUser(email, password)
             .then(result => {
                 const user = result.user
@@ -29,6 +31,7 @@ const Register = () => {
                 form.reset()
                 toast.success('Sign Up Completed')
                 navigate(from, { replace: true })
+                saveUserInDb(email, role, name)
             })
             .catch(error => setError(error.message))
 
@@ -41,6 +44,20 @@ const Register = () => {
         updateUserProfile(profile)
             .then(() => { })
             .catch(err => setError(err.message))
+    }
+    const saveUserInDb = (email, role, name) => {
+        const user = { email, role, name }
+        fetch(`http://localhost:5000/users`, {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+            })
     }
     return (
         <form onSubmit={handleSubmit} >
@@ -66,7 +83,7 @@ const Register = () => {
                             <label className="label">
                                 <span className="label-text">Select Your Role</span>
                             </label>
-                            <select className="select w-full input-bordered required  ">
+                            <select name='role' className="select w-full input-bordered required  ">
 
                                 <option value='user'>User</option>
                                 <option value='seller'>Seller</option>

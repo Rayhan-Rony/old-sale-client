@@ -1,13 +1,13 @@
 
 
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Context/AuthProvider";
 
 
 const Login = () => {
-    const { signIn, loginWithGoogle } = useContext(AuthContext)
+    const { signIn, user, loginWithGoogle } = useContext(AuthContext)
     const [error, setError] = useState('')
 
     const location = useLocation()
@@ -30,7 +30,7 @@ const Login = () => {
                 form.reset()
                 toast.success('Log in Succesfulll')
 
-                navigate(from, { replace: true })
+
             })
             .catch(err => setError(err.message))
 
@@ -46,6 +46,12 @@ const Login = () => {
             })
             .catch(err => setError(err.message))
     }
+    useEffect(() => {
+        if (user) {
+            navigate(from, { replace: true })
+        }
+    }
+        , [user, navigate, from])
     return (
         <form onSubmit={handleOnSubmit}>
             <div className="hero-content flex-col lg:flex-row-reverse lg:w-1/2 md:w-full mx-auto">
