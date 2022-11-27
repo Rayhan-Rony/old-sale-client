@@ -33,7 +33,7 @@
         "usedTime": "10 months",
         "time": "3 days ago",
         "sellersName": "Asha Rani",
-        "soldStatus": "false"
+        "soldStatus": "avialable"
     },
     {
         "category_id": "2",
@@ -57,7 +57,7 @@
         "usedTime": "10 months",
         "time": "15 days ago",
         "sellersName": "Rayhan Ali",
-        "soldStatus": "false"
+        "soldStatus": "avialable"
     },
     {
         "category_id": "2",
@@ -81,7 +81,7 @@
         "usedTime": "9 months",
         "time": "2 days ago",
         "sellersName": "Kader Box",
-        "soldStatus": "false"
+        "soldStatus": "avialable"
     },
     {
         "category_id": "3",
