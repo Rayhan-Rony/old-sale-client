@@ -13,7 +13,7 @@ const Products = () => {
             .then(res => res.json())
 
     })
-    // console.log(products)
+    console.log(products)
 
 
     // const products = useLoaderData()
