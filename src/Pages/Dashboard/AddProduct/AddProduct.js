@@ -11,9 +11,9 @@ const AddProduct = () => {
     const category_id = categoryId
     const sellerName = user?.displayName
 
-    const { name, img, location, resalePrice, originalPrice, usedTime, time, sellersName } = products
+    const { name, img, location, resalePrice, originalPrice, usedTime, time, sellersName, soldStatus } = products
     const saveProduct = {
-        category_id, name, img, location, resalePrice, originalPrice, usedTime, time, sellersName
+        category_id, name, img, location, resalePrice, originalPrice, usedTime, time, sellersName, soldStatus
     }
 
     const handleAddProduct = e => {
@@ -36,7 +36,8 @@ const AddProduct = () => {
             originalPrice,
             usedTime,
             time: date,
-            sellersName: sellerName
+            sellersName: sellerName,
+            soldStatus: 'avialable'
         }
         setProducts(product)
         if (category === 'samsung') {
@@ -63,7 +64,7 @@ const AddProduct = () => {
             .then(res => res.json())
             .then(data => {
                 console.log(data)
-                navigate('/myorders')
+                navigate('/myproducts')
 
             })
 

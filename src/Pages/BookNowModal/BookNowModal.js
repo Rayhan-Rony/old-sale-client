@@ -2,12 +2,13 @@ import React, { useContext } from 'react';
 import toast from 'react-hot-toast';
 import { AuthContext } from '../../Context/AuthProvider';
 
-const BookNowModal = ({ name, price }) => {
+const BookNowModal = ({ modalproduct }) => {
     const { user } = useContext(AuthContext)
-    console.log(user?.displayName)
-    const handleBook = e => {
+    // console.log(product)
+    const handleBook = (e) => {
         e.preventDefault()
         toast.success('Added Your Booking')
+        console.log(modalproduct.name)
 
     }
     return (
@@ -17,9 +18,9 @@ const BookNowModal = ({ name, price }) => {
                 <div className="modal-box relative">
                     <label htmlFor="booking-modal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
 
-                    <h3 className="text-lg font-bold">{name}</h3>
+                    <h3 className="text-lg font-bold">{modalproduct.name}</h3>
                     <form onSubmit={handleBook} className='grid grid-cols-1 gap-3 mt-10'>
-                        <div className="badge badge-outline">Resale Price: {price}</div>
+                        <div className="badge badge-outline">Resale Price:{modalproduct.resalePrice} </div>
                         {/* <input type="text" defaultValue={price} disabled className="input w-full input-bordered" /> */}
                         {/* <select name='slot' className="select select-bordered w-full ">
 

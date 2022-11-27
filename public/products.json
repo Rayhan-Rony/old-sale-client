@@ -8,7 +8,8 @@
         "originalPrice": "$350",
         "usedTime": "7 months",
         "time": "4 days ago",
-        "sellersName": "Hasina Apa"
+        "sellersName": "Hasina Apa",
+        "soldStatus": "avialable"
     },
     {
         "category_id": "1",
@@ -19,7 +20,8 @@
         "originalPrice": "$250",
         "usedTime": "11 months",
         "time": "16 days ago",
-        "sellersName": "Gita Rani"
+        "sellersName": "Gita Rani",
+        "soldStatus": "avialable"
     },
     {
         "category_id": "1",
@@ -30,7 +32,8 @@
         "originalPrice": "$450",
         "usedTime": "10 months",
         "time": "3 days ago",
-        "sellersName": "Asha Rani"
+        "sellersName": "Asha Rani",
+        "soldStatus": "false"
     },
     {
         "category_id": "2",
@@ -41,7 +44,8 @@
         "originalPrice": "$450",
         "usedTime": "8 months",
         "time": "1 days ago",
-        "sellersName": "Fokrul Alam"
+        "sellersName": "Fokrul Alam",
+        "soldStatus": "avialable"
     },
     {
         "category_id": "2",
@@ -52,7 +56,8 @@
         "originalPrice": "$450",
         "usedTime": "10 months",
         "time": "15 days ago",
-        "sellersName": "Rayhan Ali"
+        "sellersName": "Rayhan Ali",
+        "soldStatus": "false"
     },
     {
         "category_id": "2",
@@ -63,7 +68,8 @@
         "originalPrice": "$450",
         "usedTime": "2 months",
         "time": "7 days ago",
-        "sellersName": "Shovon"
+        "sellersName": "Shovon",
+        "soldStatus": "avialable"
     },
     {
         "category_id": "3",
@@ -74,7 +80,8 @@
         "originalPrice": "$450",
         "usedTime": "9 months",
         "time": "2 days ago",
-        "sellersName": "Kader Box"
+        "sellersName": "Kader Box",
+        "soldStatus": "false"
     },
     {
         "category_id": "3",
@@ -85,7 +92,8 @@
         "originalPrice": "$450",
         "usedTime": "8 months",
         "time": "5 days ago",
-        "sellersName": "Bahalul Mia"
+        "sellersName": "Bahalul Mia",
+        "soldStatus": "avialable"
     },
     {
         "category_id": "3",
@@ -96,6 +104,7 @@
         "originalPrice": "$450",
         "usedTime": "6 months",
         "time": "5 days ago",
-        "sellersName": "Bacchu Mia"
+        "sellersName": "Bacchu Mia",
+        "soldStatus": "avialable"
     }
 ]

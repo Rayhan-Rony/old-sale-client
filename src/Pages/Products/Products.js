@@ -1,10 +1,12 @@
 import { useQuery } from '@tanstack/react-query';
-import React from 'react';
+import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
+import BookNowModal from '../BookNowModal/BookNowModal';
 import SingleProduct from './SingleProduct';
 
 const Products = () => {
     const { id } = useParams()
+    const [modalproduct, setModalProduct] = useState(null)
     // const id = parseInt(par.id)
     const url = `http://localhost:5000/category/${id}`
     const { data: products = [] } = useQuery({
@@ -23,7 +25,11 @@ const Products = () => {
     return (
         <div className='grid gap-5 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 my-40 w-11/12 mx-auto'>
             {
-                products.map(product => <SingleProduct key={product._id} product={product}></SingleProduct>)
+                products.map(product => <SingleProduct key={product._id} setModalProduct={setModalProduct} product={product}></SingleProduct>)
+            }
+            {
+                modalproduct &&
+                <BookNowModal modalproduct={modalproduct}></BookNowModal>
             }
         </div>
     );
