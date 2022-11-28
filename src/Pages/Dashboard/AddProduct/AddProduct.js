@@ -10,10 +10,12 @@ const AddProduct = () => {
 
     const category_id = categoryId
     const sellerName = user?.displayName
+    const sellerEmail = user?.email
+    console.log(sellerEmail)
 
     const { name, img, location, resalePrice, originalPrice, usedTime, time, sellersName, soldStatus } = products
     const saveProduct = {
-        category_id, name, img, location, resalePrice, originalPrice, usedTime, time, sellersName, soldStatus
+        category_id, name, img, location, resalePrice, originalPrice, usedTime, time, sellersName, soldStatus, sellerEmail
     }
 
     const handleAddProduct = e => {
