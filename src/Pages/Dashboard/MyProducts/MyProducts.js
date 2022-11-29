@@ -6,7 +6,7 @@ const MyProducts = () => {
     const { user } = useContext(AuthContext)
     // const [disabled, setDisabled] = useState(false)
 
-    // console.log(user?.displayName)
+
 
 
     const { data: myproducts = [] } = useQuery({
@@ -14,18 +14,16 @@ const MyProducts = () => {
         queryFn: () => fetch(`http://localhost:5000/myProducts?email=${user?.email}`)
             .then(res => res.json())
     })
-    // console.log(myproducts)
+
 
 
     const handleAdvertise = (product) => {
         console.log(product)
-        const { category_id, img, location, originalPrice, resalePrice, sellerEmail, sellersName, soldStatus, time, usedTime, _id } = product
+        const { category_id, name, img, location, originalPrice, resalePrice, sellerEmail, sellersName, soldStatus, time, usedTime, _id } = product
         const id = _id
         const advertiseStatus = 'true'
-        const productForadd = { id, category_id, img, location, originalPrice, resalePrice, sellerEmail, sellersName, soldStatus, time, usedTime, advertiseStatus }
-        // const advertiseProduct = { advertiseStatus, ...product }
+        const productForadd = { id, category_id, name, img, location, originalPrice, resalePrice, sellerEmail, sellersName, soldStatus, time, usedTime, advertiseStatus }
 
-        // console.log(advertiseProduct)
 
         fetch('http://localhost:5000/advertise', {
             method: 'POST',
