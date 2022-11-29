@@ -28,6 +28,7 @@ const Login = () => {
                 const users = result.user;
                 console.log(users)
                 setError('')
+
                 form.reset()
                 toast.success('Log in Succesfulll')
 
