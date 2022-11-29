@@ -4,14 +4,14 @@ import React from 'react';
 const Allsellers = () => {
     const { data: sellers = [], refetch } = useQuery({
         queryKey: ['seller'],
-        queryFn: () => fetch('http://localhost:5000/sellers')
+        queryFn: () => fetch('https://server-murex-nine.vercel.app/sellers')
             .then(res => res.json())
 
     })
 
     const handleDelete = (id) => {
 
-        fetch(`http://localhost:5000/user/${id}`, {
+        fetch(`https://server-murex-nine.vercel.app/user/${id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())
@@ -20,13 +20,13 @@ const Allsellers = () => {
 
                     refetch()
                 }
-                console.log(data)
+
 
             })
 
     }
 
-    console.log(sellers)
+
     return (
         <div className="overflow-x-auto min-h-screen">
             <table className="table w-full">
@@ -54,15 +54,7 @@ const Allsellers = () => {
                             <td><button onClick={() => handleDelete(seller._id)} className='btn btn-outline btn-xs'>Delete</button></td>
                             <td><button className='btn btn-outline btn-xs'>Verify</button></td>
 
-                            {/* {
-                                myProduct.soldStatus === 'sold' ? <td><button className='btn btn-outline btn-xs ' disabled>Advertise</button></td> :
 
-                                    <td><button onClick={() => handleAdvertise(myProduct)} className='btn btn-outline btn-xs'>Advertise</button></td>
-
-
-
-                            } */}
-                            {/* <td><button onClick={() => handleDelete(myProduct._id)} className='btn btn-outline btn-xs'>Delete</button></td> */}
                         </tr>)
                     }
 

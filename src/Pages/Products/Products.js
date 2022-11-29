@@ -8,7 +8,7 @@ const Products = () => {
     const { id } = useParams()
     const [modalproduct, setModalProduct] = useState(null)
 
-    const url = `http://localhost:5000/category/${id}`
+    const url = `https://server-murex-nine.vercel.app/category/${id}`
     const { data: products = [] } = useQuery({
         queryKey: ['products', id],
         queryFn: () => fetch(url)

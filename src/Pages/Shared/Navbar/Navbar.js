@@ -4,15 +4,9 @@ import { AuthContext } from '../../../Context/AuthProvider';
 
 const Navbar = () => {
     const { logOut, user } = useContext(AuthContext)
-    console.log(user?.email)
 
-    // const { data: products = [] } = useQuery({
-    //     queryKey: ['products', id],
-    //     queryFn: () => fetch(url)
-    //         .then(res => res.json())
 
-    // })
-    // console.log(users[0].role)
+
     return (
         <div className="navbar bg-gray-200 rounded-sm">
             <div className="flex-1">
@@ -25,9 +19,6 @@ const Navbar = () => {
                     {
                         user?.uid ?
                             <>
-
-
-
                                 <li><Link to='/dashboard'>Dashboard</Link></li>
                                 <li><Link onClick={logOut}>log Out</Link></li>
                             </>

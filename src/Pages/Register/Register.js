@@ -18,14 +18,14 @@ const Register = () => {
         const name = form.name.value;
         const email = form.email.value;
         const password = form.password.value;
-        // const user = form.user;
+
         const role = form.role.value;
 
         console.log(role, name, email, password)
         createUser(email, password)
             .then(result => {
                 const user = result.user
-                console.log(user)
+
                 setError('')
                 handleUpdateUserProfile(name)
                 form.reset()
@@ -47,7 +47,7 @@ const Register = () => {
     }
     const saveUserInDb = (email, role, name) => {
         const user = { email, role, name }
-        fetch(`http://localhost:5000/users`, {
+        fetch(`https://server-murex-nine.vercel.app/users`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -56,7 +56,7 @@ const Register = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data)
+
             })
     }
     return (

@@ -11,7 +11,7 @@ const AddProduct = () => {
     const category_id = categoryId
     const sellerName = user?.displayName
     const sellerEmail = user?.email
-    console.log(sellerEmail)
+
 
     const { name, img, location, resalePrice, originalPrice, usedTime, time, sellersName, soldStatus } = products
     const saveProduct = {
@@ -20,7 +20,7 @@ const AddProduct = () => {
 
     const handleAddProduct = e => {
         e.preventDefault()
-        // console.log(e.target)
+
         const form = e.target
         const name = form.name.value;
         const originalPrice = form.originalprice.value;
@@ -56,7 +56,7 @@ const AddProduct = () => {
 
     }
     else {
-        fetch(`http://localhost:5000/products`, {
+        fetch(`https://server-murex-nine.vercel.app/products`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -65,7 +65,7 @@ const AddProduct = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data)
+
                 navigate('/myproducts')
 
             })

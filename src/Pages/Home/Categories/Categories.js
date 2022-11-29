@@ -8,9 +8,9 @@ const Categories = () => {
     // data load using axios
 
     useEffect(() => {
-        axios.get('http://localhost:5000/categories')
+        axios.get('https://server-murex-nine.vercel.app/categories')
             .then(data => {
-                // console.log(data.data)
+
                 const phoneCategories = data.data
                 setCategories(phoneCategories)
             })

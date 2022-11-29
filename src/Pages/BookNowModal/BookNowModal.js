@@ -9,13 +9,13 @@ const BookNowModal = ({ setModalProduct, modalproduct }) => {
         e.preventDefault()
         toast.success('Added Your Booking')
         const id = modalproduct._id
-        console.log(id)
-        fetch(`http://localhost:5000/products/${id}`, {
+
+        fetch(`https://server-murex-nine.vercel.app/products/${id}`, {
             method: 'PUT'
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data)
+
             })
         setModalProduct(null)
     }

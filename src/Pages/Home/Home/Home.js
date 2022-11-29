@@ -8,10 +8,10 @@ import HomeBanner from '../HomeBanner/HomeBanner';
 const Home = () => {
     const { data: advertiseProducts = [] } = useQuery({
         queryKey: ['advertiseProducts'],
-        queryFn: () => fetch(`http://localhost:5000/advertiseProducts`)
+        queryFn: () => fetch(`https://server-murex-nine.vercel.app/advertiseProducts`)
             .then(res => res.json())
     })
-    console.log(advertiseProducts)
+
     return (
         <div>
             <HomeBanner></HomeBanner>

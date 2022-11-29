@@ -1,10 +1,10 @@
 import React from 'react';
-import BookNowModal from '../BookNowModal/BookNowModal';
+
 
 const SingleProduct = ({ product, setModalProduct }) => {
-    // console.log(product)
+
     const { img, name, time, resalePrice, originalPrice, usedTime, location, sellersName } = product
-    // console.log(img)
+
     return (
         <div className="card  bg-base-100 shadow-xl">
             <figure><img className='h-40' src={img} alt="Mobile" /></figure>
@@ -20,7 +20,7 @@ const SingleProduct = ({ product, setModalProduct }) => {
                     <div className="badge badge-outline">Original Price: {originalPrice}</div>
                     <div className="badge badge-outline">Resale Price: {resalePrice}</div>
                 </div>
-                {/* <label disabled={slots.length === 0} onClick={() => setTreatment(option)}  className="btn btn-primary text-white">Book Appointment</label> */}
+
                 <label onClick={() => setModalProduct(product)} className="btn btn-primary" htmlFor="booking-modal">Book Now</label>
             </div>
 

@@ -7,7 +7,7 @@ const Dashboard = () => {
     const { user } = useContext(AuthContext)
     const { data: users = [] } = useQuery({
         queryKey: ['users', user],
-        queryFn: () => fetch(`http://localhost:5000/users?email=${user?.email}`)
+        queryFn: () => fetch(`https://server-murex-nine.vercel.app/users?email=${user?.email}`)
             .then(res => res.json())
     })
     return (

@@ -1,31 +1,31 @@
 import { useQuery } from '@tanstack/react-query';
-import React, { useContext, useState } from 'react';
+import React, { useContext, } from 'react';
 import { AuthContext } from '../../../Context/AuthProvider';
 
 const MyProducts = () => {
     const { user } = useContext(AuthContext)
-    // const [disabled, setDisabled] = useState(false)
 
 
 
 
-    const { data: myproducts = [] } = useQuery({
+
+    const { data: myproducts = [], refetch } = useQuery({
         queryKey: ['users', user],
-        queryFn: () => fetch(`http://localhost:5000/myProducts?email=${user?.email}`)
+        queryFn: () => fetch(`https://server-murex-nine.vercel.app/myProducts?email=${user?.email}`)
             .then(res => res.json())
     })
 
 
 
     const handleAdvertise = (product) => {
-        console.log(product)
+
         const { category_id, name, img, location, originalPrice, resalePrice, sellerEmail, sellersName, soldStatus, time, usedTime, _id } = product
         const id = _id
         const advertiseStatus = 'true'
         const productForadd = { id, category_id, name, img, location, originalPrice, resalePrice, sellerEmail, sellersName, soldStatus, time, usedTime, advertiseStatus }
 
 
-        fetch('http://localhost:5000/advertise', {
+        fetch('https://server-murex-nine.vercel.app/advertise', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -35,31 +35,32 @@ const MyProducts = () => {
             .then(res => res.json())
             .then(data => {
                 if (data.acknowledged === true) {
-                    console.log('true')
-                    // setDisabled(true)
+
                 }
             })
     }
     const handleDelete = (id) => {
         console.log(id)
-        fetch(`http://localhost:5000/advertise/${id}`, {
+        fetch(`https://server-murex-nine.vercel.app/advertise/${id}`, {
             method: 'DELETE',
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data)
+
             })
 
-        fetch(`http://localhost:5000/products/${id}`, {
+        fetch(`https://server-murex-nine.vercel.app/products/${id}`, {
             method: 'DELETE',
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data)
+                if (data.deletedCount > 0) {
+                    refetch()
+                }
             })
     }
 
-    // console.log(disabled)
+
     return (
         <div className="overflow-x-auto min-h-screen">
             <table className="table w-full">

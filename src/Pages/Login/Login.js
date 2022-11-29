@@ -9,11 +9,11 @@ import { AuthContext } from "../../Context/AuthProvider";
 const Login = () => {
     const { signIn, user, loginWithGoogle } = useContext(AuthContext)
     const [error, setError] = useState('')
-    // console.log(user)
+
 
     const location = useLocation()
     const from = location.state?.from?.pathname || '/'
-    console.log(from)
+
     const navigate = useNavigate()
 
 
@@ -26,7 +26,7 @@ const Login = () => {
         signIn(email, password)
             .then(result => {
                 const users = result.user;
-                console.log(users)
+
                 setError('')
 
                 form.reset()
@@ -57,7 +57,7 @@ const Login = () => {
         const email = users.email
         const role = 'user'
         const sendUser = { email, role, name }
-        fetch(`http://localhost:5000/users`, {
+        fetch(`https://server-murex-nine.vercel.app/users`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -66,7 +66,7 @@ const Login = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data)
+
             })
     }
 

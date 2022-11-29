@@ -5,13 +5,13 @@ const AllBuyers = () => {
 
     const { data: users = [], refetch } = useQuery({
         queryKey: ['user'],
-        queryFn: () => fetch('http://localhost:5000/user')
+        queryFn: () => fetch('https://server-murex-nine.vercel.app/user')
             .then(res => res.json())
 
     })
     const handleDelete = (id) => {
 
-        fetch(`http://localhost:5000/user/${id}`, {
+        fetch(`https://server-murex-nine.vercel.app/user/${id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())
@@ -20,7 +20,7 @@ const AllBuyers = () => {
 
                     refetch()
                 }
-                console.log(data)
+
 
             })
 
@@ -32,36 +32,18 @@ const AllBuyers = () => {
 
                 <thead>
                     <tr>
-
                         <th>Name</th>
                         <th>Email</th>
                         <th>Action</th>
-
-
-
                     </tr>
                 </thead>
                 <tbody>
-
-
-
                     {
                         users.map(user => <tr key={user._id} className="hover">
 
                             <td>{user.name}</td>
                             <td>{user.email}</td>
                             <td><button onClick={() => handleDelete(user._id)} className='btn btn-outline btn-xs'>Delete</button></td>
-
-
-                            {/* {
-                                myProduct.soldStatus === 'sold' ? <td><button className='btn btn-outline btn-xs ' disabled>Advertise</button></td> :
-
-                                    <td><button onClick={() => handleAdvertise(myProduct)} className='btn btn-outline btn-xs'>Advertise</button></td>
-
-
-
-                            } */}
-                            {/* <td><button onClick={() => handleDelete(myProduct._id)} className='btn btn-outline btn-xs'>Delete</button></td> */}
                         </tr>)
                     }
 
