@@ -26,6 +26,15 @@ const Dashboard = () => {
                 <li className='btn btn-outline'><Link to='/myorders'>My Orders</Link></li>
 
             }
+            {
+                users[0]?.role === 'admin' &&
+                <>
+                    <li className='btn btn-outline mr-10'><Link to='/allsellers'>All Sellers</Link></li>
+                    <li className='btn btn-outline mr-10'><Link to='/allbuyers'>All Buyers</Link></li>
+                    <li className='btn btn-outline'><Link to='/reporteditems'>Reported Items</Link></li>
+                </>
+
+            }
         </div>
     );
 };

@@ -2,6 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import AdvertiseItems from '../Advertise/AdvertiseItems';
 import Categories from '../Categories/Categories';
+import FeedBack from '../Feedback/FeedBack';
 import HomeBanner from '../HomeBanner/HomeBanner';
 
 const Home = () => {
@@ -19,6 +20,7 @@ const Home = () => {
                 advertiseProducts.length === 0 ? <></> :
                     <AdvertiseItems advertiseProducts={advertiseProducts}></AdvertiseItems>
             }
+            <FeedBack></FeedBack>
         </div>
     );
 };

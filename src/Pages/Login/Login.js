@@ -9,6 +9,7 @@ import { AuthContext } from "../../Context/AuthProvider";
 const Login = () => {
     const { signIn, user, loginWithGoogle } = useContext(AuthContext)
     const [error, setError] = useState('')
+    // console.log(user)
 
     const location = useLocation()
     const from = location.state?.from?.pathname || '/'
@@ -24,8 +25,8 @@ const Login = () => {
         console.log(email, password)
         signIn(email, password)
             .then(result => {
-                const user = result.user;
-                console.log(user)
+                const users = result.user;
+                console.log(users)
                 setError('')
                 form.reset()
                 toast.success('Log in Succesfulll')
@@ -41,11 +42,35 @@ const Login = () => {
                 const user = result.user;
                 console.log(user)
                 setError('')
-
+                GoogleUserSaveInDb(user)
                 navigate(from, { replace: true })
             })
             .catch(err => setError(err.message))
     }
+
+
+
+    const GoogleUserSaveInDb = (users) => {
+
+        const name = users.displayName
+        const email = users.email
+        const role = 'user'
+        const sendUser = { email, role, name }
+        fetch(`http://localhost:5000/users`, {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(sendUser)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+            })
+    }
+
+
+
     useEffect(() => {
         if (user) {
             navigate(from, { replace: true })

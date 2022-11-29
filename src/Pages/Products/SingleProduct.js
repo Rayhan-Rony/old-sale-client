@@ -11,7 +11,7 @@ const SingleProduct = ({ product, setModalProduct }) => {
             <div className="card-body">
                 <h2 className="card-title">
                     {name}
-                    <div className="badge badge-secondary">{time}</div>
+                    <div className="badge badge-secondary">{time.slice(0, 10)}</div>
                 </h2>
                 <p className='font-semibold text-lg'>Seller Name:  {sellersName}</p>
                 <div className="card-actions ">
