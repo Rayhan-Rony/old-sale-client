@@ -8,7 +8,7 @@ const Navbar = () => {
 
 
     return (
-        <div className="navbar bg-gray-200 rounded-sm">
+        <div className="navbar sticky top-0 z-50 bg-gray-200 rounded-sm">
             <div className="flex-1">
                 <Link to='/' className="btn btn-ghost normal-case text-xl font-extrabold">OLD SALE</Link>
             </div>
